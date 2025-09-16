@@ -1,0 +1,30 @@
+CREATE PROCEDURE sp_insertar_avance
+    @id_avance INT,
+    @id_meta INT,
+    @descripcion VARCHAR(MAX),
+    @fecha DATE,
+    @progreso INT
+    AS
+BEGIN
+ IF EXISTS (SELECT 1 FROM METAS WHERE id_meta = @id_meta)
+    BEGIN
+        INSERT INTO AVANCES (id_avance, id_meta, descripcion, fecha, progreso)
+        VALUES (@id_avance, @id_meta, @descripcion, @fecha, @progreso);
+
+        PRINT '✅ Avance registrado correctamente.';
+    END
+    ELSE
+    BEGIN
+        PRINT '❌ La meta especificada no existe. No se registró el avance.';
+    END
+END;
+
+
+EXEC sp_insertar_avance 
+    @id_avance = 5,
+    @id_meta = 1,  -- Asegúrate de que esta meta existe
+    @descripcion = 'Realicé meditación y ejercicios',
+    @fecha = '2025-07-09',
+    @progreso = 15;
+
+    SELECT * FROM AVANCES WHERE id_avance = 5;

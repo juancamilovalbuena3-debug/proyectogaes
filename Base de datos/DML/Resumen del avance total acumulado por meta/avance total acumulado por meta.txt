@@ -1,0 +1,10 @@
+SELECT 
+    m.id_meta,
+    m.titulo AS meta,
+    u.nombre_usuario,
+    SUM(a.progreso) AS progreso_acumulado
+FROM METAS m
+JOIN USUARIOS u ON u.id_usuario = m.id_usuario
+LEFT JOIN AVANCES a ON a.id_meta = m.id_meta
+GROUP BY m.id_meta, m.titulo, u.nombre_usuario
+ORDER BY progreso_acumulado DESC;

@@ -1,0 +1,10 @@
+SELECT 
+    u.nombre_usuario,
+    m.titulo AS meta,
+    h.nombre_habito,
+    uh.frecuencia
+FROM USUARIO_HABITO_META uh
+JOIN USUARIOS u ON u.id_usuario = uh.id_usuario
+JOIN HABITOS h ON h.id_habito = uh.id_habito
+JOIN METAS m ON m.id_meta = uh.id_meta
+ORDER BY u.nombre_usuario;

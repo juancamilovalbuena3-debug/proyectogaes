@@ -1,0 +1,8 @@
+SELECT 
+    u.nombre_usuario,
+    r.nombre_rol,
+    p.nombre_permiso
+FROM USUARIOS u
+JOIN ROLES r ON u.id_rol = r.id_rol
+JOIN ROLES_PERMISOS rp ON r.id_rol = rp.id_rol
+JOIN PERMISOS p ON rp.id_permiso = p.id_permiso;

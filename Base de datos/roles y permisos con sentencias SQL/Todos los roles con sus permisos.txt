@@ -1,0 +1,7 @@
+SELECT 
+    r.nombre_rol,
+    p.nombre_permiso
+FROM ROLES r
+JOIN ROLES_PERMISOS rp ON r.id_rol = rp.id_rol
+JOIN PERMISOS p ON rp.id_permiso = p.id_permiso
+ORDER BY r.nombre_rol;

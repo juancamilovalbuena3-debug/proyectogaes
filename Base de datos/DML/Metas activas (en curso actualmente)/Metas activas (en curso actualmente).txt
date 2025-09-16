@@ -1,0 +1,8 @@
+SELECT 
+    u.nombre_usuario,
+    m.titulo AS meta,
+    m.fecha_inicio,
+    m.fecha_fin
+FROM METAS m
+JOIN USUARIOS u ON u.id_usuario = m.id_usuario
+WHERE GETDATE() BETWEEN m.fecha_inicio AND m.fecha_fin;

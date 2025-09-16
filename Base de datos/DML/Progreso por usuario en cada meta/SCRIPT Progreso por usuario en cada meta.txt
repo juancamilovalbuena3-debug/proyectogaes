@@ -1,0 +1,10 @@
+SELECT 
+    u.nombre_usuario,
+    m.titulo AS meta,
+    a.fecha,
+    a.descripcion AS avance,
+    a.progreso
+FROM AVANCES a
+JOIN METAS m ON a.id_meta = m.id_meta
+JOIN USUARIOS u ON m.id_usuario = u.id_usuario
+ORDER BY u.nombre_usuario, a.fecha;
